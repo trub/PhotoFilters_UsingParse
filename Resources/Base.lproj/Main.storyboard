@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,11 +21,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IwF-gV-PVk">
                                 <rect key="frame" x="60" y="60" width="480" height="480"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.57217264803530543" green="1" blue="0.27535114837105312" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.00063213518564508397" green="0.0011047979797980112" blue="0.00030420739245540191" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-jF-b6p">
-                                <rect key="frame" x="60" y="60" width="480" height="480"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-jF-b6p">
+                                <rect key="frame" x="84" y="83.5" width="432" height="432"/>
                                 <animations/>
+                                <state key="normal" image="placeholder"/>
                                 <connections>
                                     <action selector="presentImagePickerButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rH5-jZ-0aC"/>
                                 </connections>
@@ -35,9 +36,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fLh-jF-b6p" firstAttribute="centerX" secondItem="IwF-gV-PVk" secondAttribute="centerX" id="53q-Jn-5b2"/>
-                            <constraint firstItem="fLh-jF-b6p" firstAttribute="width" secondItem="IwF-gV-PVk" secondAttribute="width" id="8gV-wK-ACv"/>
+                            <constraint firstItem="fLh-jF-b6p" firstAttribute="width" secondItem="IwF-gV-PVk" secondAttribute="width" multiplier="0.9" id="8gV-wK-ACv"/>
                             <constraint firstItem="IwF-gV-PVk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DgX-XO-kub"/>
-                            <constraint firstItem="fLh-jF-b6p" firstAttribute="height" secondItem="IwF-gV-PVk" secondAttribute="height" id="GZz-BV-fkj"/>
+                            <constraint firstItem="fLh-jF-b6p" firstAttribute="height" secondItem="IwF-gV-PVk" secondAttribute="height" multiplier="0.9" id="GZz-BV-fkj"/>
                             <constraint firstItem="IwF-gV-PVk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MhP-bT-lDD"/>
                             <constraint firstItem="IwF-gV-PVk" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="h4J-Jb-t9K"/>
                             <constraint firstItem="IwF-gV-PVk" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="snh-ug-4qM"/>
@@ -53,4 +54,7 @@
             <point key="canvasLocation" x="279" y="264"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder" width="298" height="219"/>
+    </resources>
 </document>

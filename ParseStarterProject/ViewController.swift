@@ -21,6 +21,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         testObject.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
             print("Object has been saved.")
         }
+        
+        self.view.backgroundColor = UIColor.yellowColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,26 +83,63 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
+    
+    
     // UIImagePickerController
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.imageView.image = image
         //dismiss picker
         self.dismissViewControllerAnimated(true, completion: nil)
-
         
-//        let uploaded = PFObject(className: "uploaded")
         
-
-        
-    }
+        let imageSavedToParse = PFObject(className: kParseImages)
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if let imageData = UIImageJPEGRepresentation(image, 1.0) {
+            if let imageFile = PFFile(data: imageData) {
+                imageSavedToParse["image"] = imageFile
+                imageSavedToParse.saveInBackgroundWithBlock { (success, error) -> Void in
+                    if success {
+                        print("image has been uploaded to parse BOOYAH")
+                    } else {
+                        print("error")
+                    }
+                }
+            }
+        }
+        
+        
+        // Convert to JPEG with 50% quality
+//        var data: NSData = UIImageJPEGRepresentation(imageView.image, 0.5)
+//        var imageFile: PFFile = PFFile(name: "Image.jpg", data: data)
+//        
+        //    let data = UIImageJPEGRepresentation(imageView.image, 0.5f);
+        //    let imageFile = PFFile(name: "Image.jpg", data: data)
+        
+        // Save the image to Parse
+//        imageFile.saveInBackgroundWithBlock({(succeeded: Bool, error: NSErrorPointer) in if !error {
+//            var newPhotoObject: PFObject = PFObject.objectWithClassName("PhotoObject")
+//            newPhotoObject.setObject(imageFile, forKey: "image")
+//            newPhotoObject.saveInBackgroundWithBlock({(succeeded: Bool, error: NSErrorPointer) in            if !error {
+//                print("saved")
+//            }
+//            else {
+//                print("error",error)
+//                }
+//                
+//            })
+//            }
+//            
+//        })
+//        
+//    }
+    
+        func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+
     }
 
 }
-
-
 
 
 
