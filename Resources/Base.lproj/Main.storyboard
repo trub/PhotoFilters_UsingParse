@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,62 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IwF-gV-PVk">
-                                <rect key="frame" x="180" y="20" width="240" height="239"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IwF-gV-PVk">
+                                <rect key="frame" x="60" y="60" width="480" height="480"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.57217264803530543" green="1" blue="0.27535114837105312" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="5Ip-Wx-cqU"/>
-                                    <constraint firstAttribute="width" constant="240" id="S9S-IK-NKP"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="239" id="dQb-B6-p0a"/>
-                                    <constraint firstAttribute="height" constant="239" id="wqV-4u-HQ0"/>
-                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91v-ok-Bv2">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-jF-b6p">
+                                <rect key="frame" x="60" y="60" width="480" height="480"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="presentImagePickerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iZn-fr-Kvj"/>
+                                    <action selector="presentImagePickerButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rH5-jZ-0aC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IwF-gV-PVk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="9qd-Zb-hre">
-                                <variation key="heightClass=regular-widthClass=regular" constant="108"/>
-                            </constraint>
-                            <constraint firstItem="91v-ok-Bv2" firstAttribute="centerY" secondItem="IwF-gV-PVk" secondAttribute="centerY" id="ChY-m4-64A"/>
-                            <constraint firstItem="91v-ok-Bv2" firstAttribute="height" secondItem="IwF-gV-PVk" secondAttribute="height" id="H3j-wp-5Nf"/>
-                            <constraint firstItem="91v-ok-Bv2" firstAttribute="centerX" secondItem="IwF-gV-PVk" secondAttribute="centerX" id="R0z-HM-GJF"/>
-                            <constraint firstItem="IwF-gV-PVk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="V8x-Ej-gzJ">
-                                <variation key="heightClass=regular-widthClass=regular" constant="108"/>
-                            </constraint>
-                            <constraint firstItem="91v-ok-Bv2" firstAttribute="width" secondItem="IwF-gV-PVk" secondAttribute="width" id="yZQ-Wv-l1h"/>
+                            <constraint firstItem="fLh-jF-b6p" firstAttribute="centerX" secondItem="IwF-gV-PVk" secondAttribute="centerX" id="53q-Jn-5b2"/>
+                            <constraint firstItem="fLh-jF-b6p" firstAttribute="width" secondItem="IwF-gV-PVk" secondAttribute="width" id="8gV-wK-ACv"/>
+                            <constraint firstItem="IwF-gV-PVk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DgX-XO-kub"/>
+                            <constraint firstItem="fLh-jF-b6p" firstAttribute="height" secondItem="IwF-gV-PVk" secondAttribute="height" id="GZz-BV-fkj"/>
+                            <constraint firstItem="IwF-gV-PVk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MhP-bT-lDD"/>
+                            <constraint firstItem="IwF-gV-PVk" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="h4J-Jb-t9K"/>
+                            <constraint firstItem="IwF-gV-PVk" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="snh-ug-4qM"/>
+                            <constraint firstItem="fLh-jF-b6p" firstAttribute="centerY" secondItem="IwF-gV-PVk" secondAttribute="centerY" id="xCS-R7-him"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="91v-ok-Bv2"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="ChY-m4-64A"/>
-                                <exclude reference="H3j-wp-5Nf"/>
-                                <exclude reference="R0z-HM-GJF"/>
-                                <exclude reference="yZQ-Wv-l1h"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <mask key="subviews">
-                                <include reference="91v-ok-Bv2"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="ChY-m4-64A"/>
-                                <include reference="H3j-wp-5Nf"/>
-                                <include reference="R0z-HM-GJF"/>
-                                <include reference="yZQ-Wv-l1h"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="IwF-gV-PVk" id="vyb-Gy-y1O"/>
@@ -81,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="279.75" y="264.75"/>
+            <point key="canvasLocation" x="279" y="264"/>
         </scene>
     </scenes>
 </document>
