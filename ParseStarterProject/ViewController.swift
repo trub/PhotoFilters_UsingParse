@@ -15,6 +15,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
+            print("Object has been saved.")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +86,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.imageView.image = image
         //dismiss picker
         self.dismissViewControllerAnimated(true, completion: nil)
+
+        
+//        let uploaded = PFObject(className: "uploaded")
+        
+
+        
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -100,7 +112,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 // Do any additional setup after loading the view, typically from a nib.
 
-//        let status = PFObject(className: "Status")
 //        status[kStatusTextKey] = "Took this picture on my way to code fellows today. Seattle is awesome."
 //        status["location"] = "Seattle"
 //        status["hastags"] = "#beastMode"
@@ -110,3 +121,4 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 //                print("Success saving to parse. Check parse console.")
 //            }
 //        }
+
