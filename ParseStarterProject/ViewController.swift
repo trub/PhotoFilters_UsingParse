@@ -19,10 +19,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let testObject = PFObject(className: "TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
-            print("Object has been saved.")
+            print("project loaded")
         }
         
-        self.view.backgroundColor = UIColor.yellowColor()
+        self.view.backgroundColor = UIColor( hue: 0.2,
+            saturation: 0.4,
+            brightness: 1,
+            alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,8 +33,69 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: filter ==========================================================
+    
+    @IBAction func filterButtonPressed(sender: UIButton) {
+        print("request to filter")
+        //Add safety for image
+        presentFilterAlert()
+    }
+    
+    func presentFilterAlert(){
+        let alertController = UIAlertController(title: "Filters", message: "pick", preferredStyle: .ActionSheet)
+        
+        let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default) { (alert) -> Void in
+            
+            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+                print("vintage")
+            })
+        }
+        
+        let BWFilterAction = UIAlertAction(title: "Black & White", style: .Default) { (alert) -> Void in
+            
+            FilterService.applyBWEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+                print("BW")
+            })
+        }
+        
+        
+        let chromeFilterAction = UIAlertAction(title: "Chrome", style: .Default) { (alert) -> Void in
+            
+            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+                print("Chrome")
+            })
+        }
+    
+    let cancelFilterAction = UIAlertAction(title: "cance", style: .Cancel, handler: nil)
+    
+    alertController.addAction(vintageFilterAction)
+    alertController.addAction(BWFilterAction)
+    alertController.addAction(chromeFilterAction)
+    alertController.addAction(cancelFilterAction)
+    
+    self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    // end: filter ==========================================================
+
+    //MARK: Image Picker Controller  ====================================================
+    
+    
     @IBAction func presentImagePickerButtonSelected(sender: UIButton) {
-        print("pressed")
+        print("request images")
         
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             
@@ -75,6 +139,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    
+    
     // present image picker
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
@@ -84,28 +150,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    
-    // UIImagePickerController
+    //UIImagePickerController
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.imageView.image = image
+        
+        //resize image
+        let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
+        self.imageView.image = resizedImage
+        print("resize image to 600x600")
+        
         //dismiss picker
         self.dismissViewControllerAnimated(true, completion: nil)
-        
-        
-        let imageSavedToParse = PFObject(className: kParseImages)
-    
-        if let imageData = UIImageJPEGRepresentation(image, 1.0) {
-            if let imageFile = PFFile(data: imageData) {
-                imageSavedToParse["image"] = imageFile
-                imageSavedToParse.saveInBackgroundWithBlock { (success, error) -> Void in
-                    if success {
-                        print("image has been uploaded to parse BOOYAH")
-                    } else {
-                        print("error")
-                    }
-                }
-            }
-        }
         
         
         // Convert to JPEG with 50% quality
@@ -138,8 +192,44 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
 
     }
+    
+    
+    //end: Image Picker Controller  ====================================================
+ 
+    
+    //MARK: Upload Image Controller  ====================================================
+    
+    @IBAction func uploadImageParsePressed(sender: UIButton) {
+        print("request to upload")
+        
+//        sender.enabled = false
+        
+            
+            let imageSavedToParse = PFObject(className: kParseImages)
+            
+            if let imageData = UIImageJPEGRepresentation(imageView.image!, 1.0) {
+                if let imageFile = PFFile(data: imageData) {
+                    imageSavedToParse["image"] = imageFile
+                    imageSavedToParse.saveInBackgroundWithBlock { (success, error) -> Void in
+                        if success {
+                            print("image has been uploaded to parse BOOYAH")
+//                            sender.enabled = true
+                            //present user with success alert
+                        } else {
+                            print("error")
+                        }
+                    }
+                }
+            }
+        
+    
+    
+    //end: Upload Image Controller  ====================================================
+    }
+
 
 }
+
 
 
 
