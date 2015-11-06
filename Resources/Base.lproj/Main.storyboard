@@ -8,7 +8,6 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController title="View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -26,19 +25,19 @@
                                     <constraint firstAttribute="height" constant="300" id="MxX-aH-r37"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-jF-b6p">
-                                <rect key="frame" x="149" y="87" width="300" height="300"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-jF-b6p">
+                                <rect key="frame" x="150" y="87" width="300" height="300"/>
                                 <animations/>
                                 <connections>
                                     <action selector="presentImagePickerButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rH5-jZ-0aC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93c-m1-dj5">
-                                <rect key="frame" x="150" y="420" width="300.5" height="44"/>
+                                <rect key="frame" x="150" y="420" width="301" height="44"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.19418797348484851" green="0.19418797348484851" blue="0.19418797348484851" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="lgt-qn-CHG"/>
+                                    <constraint firstAttribute="width" constant="301" id="lgt-qn-CHG"/>
                                     <constraint firstAttribute="height" constant="44" id="qgi-b4-Hwb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -85,10 +84,84 @@
                     <tabBarItem key="tabBarItem" title="Item" id="oqi-cH-Rmt"/>
                     <connections>
                         <outlet property="imageView" destination="IwF-gV-PVk" id="vyb-Gy-y1O"/>
+                        <segue destination="CFK-9n-tsO" kind="presentation" identifier="FilterPreviewSegue" id="6gM-6z-3aM"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1107" y="258"/>
+        </scene>
+        <!--Filters Preview View Controller-->
+        <scene sceneID="I2U-WO-UzK">
+            <objects>
+                <viewController id="CFK-9n-tsO" customClass="FiltersPreviewViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3ZM-AQ-wn3"/>
+                        <viewControllerLayoutGuide type="bottom" id="4eO-0r-kpa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vgm-we-n0w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wOQ-ev-XxH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jIc-N2-wWT">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterPreviewCell" id="APa-Do-NKc" customClass="FilterPreviewCollectionViewCell" customModule="ParseStarterProject_Swift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8zV-JS-eY2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="8zV-JS-eY2" firstAttribute="top" secondItem="APa-Do-NKc" secondAttribute="top" id="3Au-fo-eMM"/>
+                                            <constraint firstAttribute="bottom" secondItem="8zV-JS-eY2" secondAttribute="bottom" id="HMi-8K-NZm"/>
+                                            <constraint firstItem="8zV-JS-eY2" firstAttribute="leading" secondItem="APa-Do-NKc" secondAttribute="leading" id="Uv5-xE-bjj"/>
+                                            <constraint firstAttribute="trailing" secondItem="8zV-JS-eY2" secondAttribute="trailing" id="swO-k3-6Zb"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="8zV-JS-eY2" id="zxg-rC-ShU"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="CFK-9n-tsO" id="hMj-PG-fdN"/>
+                                    <outlet property="delegate" destination="CFK-9n-tsO" id="eJY-kR-FJP"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wOQ-ev-XxH" firstAttribute="leading" secondItem="vgm-we-n0w" secondAttribute="leading" id="7PU-RR-UES"/>
+                            <constraint firstItem="4eO-0r-kpa" firstAttribute="top" secondItem="wOQ-ev-XxH" secondAttribute="bottom" id="C54-eP-50Z"/>
+                            <constraint firstAttribute="trailing" secondItem="wOQ-ev-XxH" secondAttribute="trailing" id="d5w-AW-bLL"/>
+                            <constraint firstItem="wOQ-ev-XxH" firstAttribute="top" secondItem="vgm-we-n0w" secondAttribute="top" id="oLm-6Z-i3Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="wOQ-ev-XxH" id="12w-p0-M50"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7q-G8-lfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1094" y="1034"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="V9l-K1-S4u">

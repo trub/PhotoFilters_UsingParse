@@ -10,7 +10,7 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FiltersPreviewViewControllerDelegate {
     @IBOutlet weak var imageView: UIImageView!
 
     override func viewDidLoad() {
@@ -41,53 +41,71 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         presentFilterAlert()
     }
     
-    func presentFilterAlert(){
-        let alertController = UIAlertController(title: "Filters", message: "pick", preferredStyle: .ActionSheet)
+    func presentFilterAlert () {
         
-        let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default) { (alert) -> Void in
-            
-            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-                
-                if let filteredImage = filteredImage{
-                    self.imageView.image = filteredImage
-                }
-                print("vintage")
-            })
-        }
-        
-        let BWFilterAction = UIAlertAction(title: "Black & White", style: .Default) { (alert) -> Void in
-            
-            FilterService.applyBWEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-                
-                if let filteredImage = filteredImage{
-                    self.imageView.image = filteredImage
-                }
-                print("BW")
-            })
-        }
-        
-        
-        let chromeFilterAction = UIAlertAction(title: "Chrome", style: .Default) { (alert) -> Void in
-            
-            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-                
-                if let filteredImage = filteredImage{
-                    self.imageView.image = filteredImage
-                }
-                print("Chrome")
-            })
-        }
-    
-    let cancelFilterAction = UIAlertAction(title: "cance", style: .Cancel, handler: nil)
-    
-    alertController.addAction(vintageFilterAction)
-    alertController.addAction(BWFilterAction)
-    alertController.addAction(chromeFilterAction)
-    alertController.addAction(cancelFilterAction)
-    
-    self.presentViewController(alertController, animated: true, completion: nil)
+        //..
+        self.performSegueWithIdentifier("FilterPreviewSegue", sender: nil)
         
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "FilterPreviewSegue" {
+            let previewImageViewController = segue.destinationViewController as! FiltersPreviewViewController
+            //pass in the image from the image 
+            previewImageViewController.image = self.imageView.image
+            previewImageViewController.delegate = self
+        }
+    }
+    
+    
+//    func presentFilterAlert(){
+//        let alertController = UIAlertController(title: "Filters", message: "pick", preferredStyle: .ActionSheet)
+//        
+//        let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default) { (alert) -> Void in
+//            
+//            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+//                
+//                if let filteredImage = filteredImage{
+//                    self.imageView.image = filteredImage
+//                }
+//                print("vintage")
+//            })
+//        }
+//        
+//        let BWFilterAction = UIAlertAction(title: "Black & White", style: .Default) { (alert) -> Void in
+//            
+//            FilterService.applyBWEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+//                
+//                if let filteredImage = filteredImage{
+//                    self.imageView.image = filteredImage
+//                }
+//                print("BW")
+//            })
+//        }
+//        
+//        
+//        let chromeFilterAction = UIAlertAction(title: "Chrome", style: .Default) { (alert) -> Void in
+//            
+//            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+//                
+//                if let filteredImage = filteredImage{
+//                    self.imageView.image = filteredImage
+//                }
+//                print("Chrome")
+//            })
+//        }
+//    
+//    let cancelFilterAction = UIAlertAction(title: "cance", style: .Cancel, handler: nil)
+//    
+//    alertController.addAction(vintageFilterAction)
+//    alertController.addAction(BWFilterAction)
+//    alertController.addAction(chromeFilterAction)
+//    alertController.addAction(cancelFilterAction)
+//    
+//    self.presentViewController(alertController, animated: true, completion: nil)
+//        
+//    }
     
     // end: filter ==========================================================
 
@@ -193,6 +211,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
     
+    func filtersPreviewViewControllerDidFinish(image: UIImage) {
+        self.imageView.image = image
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
     
     //end: Image Picker Controller  ====================================================
  
@@ -201,9 +225,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func uploadImageParsePressed(sender: UIButton) {
         print("request to upload")
-        
-//        sender.enabled = false
-        
             
             let imageSavedToParse = PFObject(className: kParseImages)
             
@@ -230,24 +251,4 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 }
 
-
-
-
-
-
-
-
-// create a class in parse
-
-// Do any additional setup after loading the view, typically from a nib.
-
-//        status[kStatusTextKey] = "Took this picture on my way to code fellows today. Seattle is awesome."
-//        status["location"] = "Seattle"
-//        status["hastags"] = "#beastMode"
-//
-//        status.saveInBackgroundWithBlock { (success, error) -> Void in
-//            if success {
-//                print("Success saving to parse. Check parse console.")
-//            }
-//        }
 
