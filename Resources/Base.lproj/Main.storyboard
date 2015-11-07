@@ -81,7 +81,7 @@
                             <constraint firstItem="fLh-jF-b6p" firstAttribute="height" secondItem="IwF-gV-PVk" secondAttribute="height" id="wkt-xQ-WnF"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="oqi-cH-Rmt"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="oqi-cH-Rmt"/>
                     <connections>
                         <outlet property="imageView" destination="IwF-gV-PVk" id="vyb-Gy-y1O"/>
                         <segue destination="CFK-9n-tsO" kind="presentation" identifier="FilterPreviewSegue" id="6gM-6z-3aM"/>
@@ -163,6 +163,79 @@
             </objects>
             <point key="canvasLocation" x="1094" y="1034"/>
         </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="o2N-w6-79g">
+            <objects>
+                <viewController id="3mL-kY-TIo" customClass="GalleryViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QXz-WH-1Ch"/>
+                        <viewControllerLayoutGuide type="bottom" id="yaD-Wl-SFM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G5n-UV-ibV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fG8-Sb-MCH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c9I-ud-0Lw">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="galleryCell" id="EnR-d9-eDC" customClass="FilterPreviewCollectionViewCell" customModule="ParseStarterProject_Swift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GDU-dW-4YJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="GDU-dW-4YJ" secondAttribute="bottom" id="IuR-DN-AGj"/>
+                                            <constraint firstItem="GDU-dW-4YJ" firstAttribute="top" secondItem="EnR-d9-eDC" secondAttribute="top" id="NlR-VW-ukn"/>
+                                            <constraint firstAttribute="trailing" secondItem="GDU-dW-4YJ" secondAttribute="trailing" id="TuX-Sv-j9l"/>
+                                            <constraint firstItem="GDU-dW-4YJ" firstAttribute="leading" secondItem="EnR-d9-eDC" secondAttribute="leading" id="gil-M0-cAe"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="GDU-dW-4YJ" id="ayR-5c-KcI"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="3mL-kY-TIo" id="qGC-x7-QHz"/>
+                                    <outlet property="delegate" destination="3mL-kY-TIo" id="fOQ-M2-O9G"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fG8-Sb-MCH" firstAttribute="leading" secondItem="G5n-UV-ibV" secondAttribute="leading" id="7sB-FZ-ObS"/>
+                            <constraint firstAttribute="bottom" secondItem="fG8-Sb-MCH" secondAttribute="bottom" id="CQt-BS-1PV"/>
+                            <constraint firstAttribute="trailing" secondItem="fG8-Sb-MCH" secondAttribute="trailing" id="JDh-kV-k4W"/>
+                            <constraint firstItem="fG8-Sb-MCH" firstAttribute="top" secondItem="G5n-UV-ibV" secondAttribute="top" id="aHE-Xu-Ccu"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="ZfQ-Ru-u67"/>
+                    <connections>
+                        <outlet property="collectionView" destination="fG8-Sb-MCH" id="bU3-gB-Km0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JuQ-7u-VRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="207" y="993"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="V9l-K1-S4u">
             <objects>
@@ -175,6 +248,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Nl0-S6-QVu"/>
+                        <segue destination="3mL-kY-TIo" kind="relationship" relationship="viewControllers" id="iAo-T2-NHI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHL-ng-qyk" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -26,6 +26,7 @@
 		E1F9F5041BED620300001261 /* FiltersPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9F5031BED620300001261 /* FiltersPreviewViewController.swift */; };
 		E1F9F5061BED64CC00001261 /* FilterPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9F5051BED64CC00001261 /* FilterPreviewCollectionViewCell.swift */; };
 		E1F9F5081BED6F1F00001261 /* FlexibleFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9F5071BED6F1F00001261 /* FlexibleFlowLayout.swift */; };
+		E1F9F50A1BED74F300001261 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9F5091BED74F300001261 /* GalleryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		E1F9F5031BED620300001261 /* FiltersPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersPreviewViewController.swift; sourceTree = "<group>"; };
 		E1F9F5051BED64CC00001261 /* FilterPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1F9F5071BED6F1F00001261 /* FlexibleFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlexibleFlowLayout.swift; sourceTree = "<group>"; };
+		E1F9F5091BED74F300001261 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				E1F9F4141BE9203200001261 /* API.swift */,
 				E1F9F4121BE7D9EB00001261 /* Splash.storyboard */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				E1F9F5091BED74F300001261 /* GalleryViewController.swift */,
 				E1F9F5031BED620300001261 /* FiltersPreviewViewController.swift */,
 				E1F9F5051BED64CC00001261 /* FilterPreviewCollectionViewCell.swift */,
 			);
@@ -239,6 +242,7 @@
 				E1F9F4151BE9203200001261 /* API.swift in Sources */,
 				E1F9F41B1BE9321500001261 /* ExtendImageResizer.swift in Sources */,
 				E1F9F5081BED6F1F00001261 /* FlexibleFlowLayout.swift in Sources */,
+				E1F9F50A1BED74F300001261 /* GalleryViewController.swift in Sources */,
 				E1F9F4111BE7D91900001261 /* constants.swift in Sources */,
 				E1F9F5061BED64CC00001261 /* FilterPreviewCollectionViewCell.swift in Sources */,
 			);
